@@ -6,8 +6,21 @@ var specialCharOption = ["$","^","?",":",",","(",")","{","}","[","]","~","-","."
 // 1.) Prompt user to enter passowrd criteria
 //   a. password length must be between 8 and 128
 //   b. lowercases, uppercases, special characters, and numbers
+function generatePassword()
+  var passwordLength = prompt("How long would you like you new password to be? 8-128 characters");
+    if (passwordLength < 8 || passwordLength > 128){
+      alert("Invalid length! Please enter a length between 8 and 128 characters.")
+    }
+    var uppercases = confirm("Would you like to include uppercases in your new password?");
+    var lowercases = confirm("Would you like to include lowercases in your new password?");
+    var numbers = confirm("Would you like to include numbers in your new password?");
+    var specialchars = confirm("Would you like to include special characters in your new password?");
+
+
+
 // 2.) Validate inpute to ensure one charater type is selected 
-// 3.) diplay generated password
+// 3.) Generate passowrd based on the criterias
+// 4.) diplay generated password
   
 
 // Assignment Code
