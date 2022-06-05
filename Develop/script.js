@@ -11,47 +11,42 @@ function generatePassword(){
   var passwordLength = prompt("How long would you like your new password to be? 8-128 characters");
     if (passwordLength < 8 || passwordLength > 128){
       alert("Invalid length! Please enter a length between 8 and 128 characters.");
-      generatePassword()
+      return generatePassword();
     }
-    if (passwordLength >= 8 && passwordLength <= 128){
+      // 2.) Validate inpute to ensure one charater type is selected 
       var option_uppercases = confirm("Would you like to include uppercases in your new password?");
       var option_lowercases = confirm("Would you like to include lowercases in your new password?");
       var option_numbers = confirm("Would you like to include numbers in your new password?");
       var option_specialchars = confirm("Would you like to include special characters in your new password?");
-    }
-     // 2.) Validate inpute to ensure one charater type is selected 
-     if (option_uppercases != true && option_lowercases != true && option_numbers != true && option_specialchars != true){
-      alert("Please select atleast one character type!");
-    var option_uppercases = confirm("Would you like to include uppercases in your new password?");
-    var option_lowercases = confirm("Would you like to include lowercases in your new password?");
-    var option_numbers = confirm("Would you like to include numbers in your new password?");
-    var option_specialchars = confirm("Would you like to include special characters in your new password?");
-    }
-    else if (option_uppercases && option_lowercases && option_numbers && option_specialchars ){
-      var choices = [];
-    if (option_specialchars) {
-        choices = choices.concat(specialchars);
-    }
-    if (option_lowercases) {
-        choices = choices.concat(lowercases);
-    }
-    if (option_uppercases) {
-        choices = choices.concat(uppercases);
-    }
-    if (option_numbers) {
-        choices = choices.concat(numbers);
-    }
-    var passwordgen = "";
-    for (i = 0; i < choices.length; i++) {
-        passwordgen += choices[i];
-    }
-// 3.) Generate password based on the criterias
-    var generate = "";
-    for (var i = 0; i < passwordLength; i++) {
-        generate += passwordgen.charAt(Math.floor(Math.random() * passwordgen.length));
-    }
-    // 4.) diplay generated password
-    return generate;
+      if (option_uppercases != true && option_lowercases != true && option_numbers != true && option_specialchars != true){
+        alert("Please select atleast one character type!");
+        return "Please try again.";
+      }
+      else if (option_uppercases || option_lowercases || option_numbers || option_specialchars ){
+        var choices = [];
+      if (option_specialchars) {
+          choices = choices.concat(specialchars);
+      }
+      if (option_lowercases) {
+          choices = choices.concat(lowercases);
+      }
+      if (option_uppercases) {
+          choices = choices.concat(uppercases);
+      }
+      if (option_numbers) {
+          choices = choices.concat(numbers);
+      }
+      var passwordgen = "";
+      for (i = 0; i < choices.length; i++) {
+          passwordgen += choices[i];
+      }
+  // 3.) Generate password based on the criterias
+      var generate = "";
+      for (var i = 0; i < passwordLength; i++) {
+          generate += passwordgen.charAt(passwordgen.length * Math.random());
+      }
+      // 4.) diplay generated password
+      return generate;
 }
 }
   
