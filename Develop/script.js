@@ -6,10 +6,12 @@ var specialchars = ["$","^","?",":",",","(",")","{","}","[","]","~","-",".","!",
 // 1.) Prompt user to enter password criteria
 //   a. password length must be between 8 and 128
 //   b. lowercases, uppercases, special characters, and numbers
-function passwordCrit(){
+function generatePassword(){
+  console.log("Hey, you clciked the button!");
   var passwordLength = prompt("How long would you like your new password to be? 8-128 characters");
     if (passwordLength < 8 || passwordLength > 128){
       alert("Invalid length! Please enter a length between 8 and 128 characters.");
+      generatePassword()
     }
     if (passwordLength >= 8 && passwordLength <= 128){
       var option_uppercases = confirm("Would you like to include uppercases in your new password?");
@@ -25,16 +27,33 @@ function passwordCrit(){
     var option_numbers = confirm("Would you like to include numbers in your new password?");
     var option_specialchars = confirm("Would you like to include special characters in your new password?");
     }
-    var passwordSettings = {
-      passwordLength: passwordLength,
-      option_uppercases: option_uppercases,
-      option_lowercases: option_lowercases,
-      option_numbers: option_numbers,
-      option_specialchars: option_specialchars
+    else if (option_uppercases && option_lowercases && option_numbers && option_specialchars ){
+      var characters = [];
+    if (option_specialchars) {
+        characters = characters.concat(specialchars);
     }
-}
+    if (option_lowercases) {
+        characters = characters.concat(lowercases);
+    }
+    if (option_uppercases) {
+        characters = characters.concat(uppercases);
+    }
+    if (option_numbers) {
+        characters = characters.concat(numbers);
+    }
+    var passwordgen = "";
+    for (i = 0; i < characters.length; i++) {
+        passwordgen += characters[i];
+    }
 // 3.) Generate password based on the criterias
-// 4.) diplay generated password
+    var generate = "";
+    for (var i = 0; i < passwordLength; i++) {
+        generate += passwordgen.charAt(Math.floor(Math.random() * passwordgen.length));
+    }
+    // 4.) diplay generated password
+    return generate;
+}
+}
   
 
 // Assignment Code
