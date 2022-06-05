@@ -28,22 +28,22 @@ function generatePassword(){
     var option_specialchars = confirm("Would you like to include special characters in your new password?");
     }
     else if (option_uppercases && option_lowercases && option_numbers && option_specialchars ){
-      var characters = [];
+      var choices = [];
     if (option_specialchars) {
-        characters = characters.concat(specialchars);
+        choices = choices.concat(specialchars);
     }
     if (option_lowercases) {
-        characters = characters.concat(lowercases);
+        choices = choices.concat(lowercases);
     }
     if (option_uppercases) {
-        characters = characters.concat(uppercases);
+        choices = choices.concat(uppercases);
     }
     if (option_numbers) {
-        characters = characters.concat(numbers);
+        choices = choices.concat(numbers);
     }
     var passwordgen = "";
-    for (i = 0; i < characters.length; i++) {
-        passwordgen += characters[i];
+    for (i = 0; i < choices.length; i++) {
+        passwordgen += choices[i];
     }
 // 3.) Generate password based on the criterias
     var generate = "";
